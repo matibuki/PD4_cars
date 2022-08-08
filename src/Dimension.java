@@ -3,6 +3,12 @@ public class Dimension {
     private int width;
     private int trunkCapacity;
 
+    public Dimension(int height, int width, int trunkCapacity) {
+        this.height = height;
+        this.width = width;
+        this.trunkCapacity = trunkCapacity;
+    }
+
 
     ////////////height
     public int getHeight() {

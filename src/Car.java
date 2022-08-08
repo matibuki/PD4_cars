@@ -5,37 +5,10 @@ import java.util.Random;
 
 public class Car {
 
-    private int year;
-    private String color;
-    private String producent;
+
+//    private String producent;
     private boolean isAutomaticGear;
     private String segment;
-    Producent producents;
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getProducent() {
-        return producent;
-    }
-
-    public void setProducent(String producent) {
-        this.producent = producent;
-    }
-
 
     public boolean isAutomaticGear() {
             return isAutomaticGear;
@@ -51,17 +24,11 @@ public class Car {
             this.segment = segment;
     }
 
-//    List<Producent> producents;
-    Producent X7 = new Producent("BMW", "X7");
-
-    public Car (int year, String color, Producent producent){
-        this.year = year;
-        this.color = color;
-        this.producent = producent;
-
+    public Car (Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimensions){
+        this.isAutomaticGear = isAutomaticGear;
+        this.segment = segment;
     }
-//    List<Car> cars = new ArrayList<>();
-//        cars.add(new Car(2000, "Red", getProducent());
+
 
     public static void main(String[] args) {
         List<Country> countries = new ArrayList<Country>();
@@ -84,8 +51,40 @@ public class Car {
         }
 
         List<Dimension> dimensions = new ArrayList<Dimension>();
+        dimensions.add(new Dimension(100, 300, 400));
+        dimensions.add(new Dimension(80, 250, 350));
+        dimensions.add(new Dimension(81, 210, 1350));
+        dimensions.add(new Dimension(82, 220, 2350));
+        dimensions.add(new Dimension(83, 240, 4350));
+        dimensions.add(new Dimension(84, 270, 1350));
+        dimensions.add(new Dimension(90, 250, 2350));
+        dimensions.add(new Dimension(80, 240, 750));
+        dimensions.add(new Dimension(77, 252, 850));
+        dimensions.add(new Dimension(83, 310, 200));
+
+        List<Producent> producents = new ArrayList<Producent>();
+        producents.add(new Producent("FSO", "Polonez"));
+        producents.add(new Producent("BMW", "X5"));
+        producents.add(new Producent("AUDI", "A4"));
+        producents.add(new Producent("MERCEDES", "C3"));
+        producents.add(new Producent("FSO", "Fiat"));
+        producents.add(new Producent("Renault", "Twingo"));
+        producents.add(new Producent("Citroen", "Xsara"));
+        producents.add(new Producent("Porsche", "Cayenne"));
+        producents.add(new Producent("Porsche", "Boxter"));
+        producents.add(new Producent("Ferrarri", "f430"));
 
 
+
+        List<Car> cars = new ArrayList<Car>();
+        for (int i=0; i < 15; i++) {
+            cars.add(new Car(producents.get(0), false, markets.get(0), "standard", dimensions.get(0)));
+            cars.add(new Car(producents.get(1), false, markets.get(1), "standard", dimensions.get(1)));
+            cars.add(new Car(producents.get(2), false, markets.get(2), "standard", dimensions.get(2)));
+            cars.add(new Car(producents.get(3), false, markets.get(3), "standard", dimensions.get(3)));
+
+        }
+        System.out.println(cars);
     }
 
     public static int randomIndex(int end) {
