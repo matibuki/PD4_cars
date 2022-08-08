@@ -110,7 +110,19 @@ public class Car {
             cars.add(new Car(producents.get(2), false, markets.get(2), "standard", dimensions.get(2)));
             cars.add(new Car(producents.get(3), false, markets.get(3), "standard", dimensions.get(3)));
 
-        System.out.println(cars);
+        System.out.println(" ");
+        System.out.println("CAR MODEL TYPE GEARTYPE MARKET HEIGHT WIDTH TRUNKCAPACITY");
+        System.out.println(" ");
+        for (int i=0; i < cars.size(); i++) {
+
+            System.out.println(cars.get(i).getProducent().getModel() + " " + cars.get(i).getProducent().getType() + " " +
+                    cars.get(i).isAutomaticGear() + " " + cars.get(i).getMarket().getName() + " " + cars.get(i).getSegment() +" " +
+                    cars.get(i).getDimension().getHeight() + " " + cars.get(i).getDimension().getWidth() + " " +
+                    cars.get(i).getDimension().getTrunkCapacity());
+
+
+        }
+
     }
 
     public static int randomIndex(int end) {

@@ -18,8 +18,8 @@ public class Market {
     }
 
     public Market (String marketName) {
-        name = marketName;
-        countries = new ArrayList<Country>();
+        this.name = marketName;
+        this.countries = new ArrayList<Country>();
     }
 
 
