@@ -17,6 +17,7 @@ public class Market {
         countries.add(c);
     }
 
+
     public Market (String marketName) {
         this.name = marketName;
         this.countries = new ArrayList<Country>();

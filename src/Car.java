@@ -104,26 +104,56 @@ public class Car {
 
 
         List<Car> cars = new ArrayList<Car>();
-//        for (int i=0; i < 15; i++)
             cars.add(new Car(producents.get(0), false, markets.get(0), "standard", dimensions.get(0)));
-            cars.add(new Car(producents.get(1), false, markets.get(1), "standard", dimensions.get(1)));
-            cars.add(new Car(producents.get(2), false, markets.get(2), "standard", dimensions.get(2)));
-            cars.add(new Car(producents.get(3), false, markets.get(3), "standard", dimensions.get(3)));
+            cars.add(new Car(producents.get(1), true, markets.get(1), "medium", dimensions.get(1)));
+            cars.add(new Car(producents.get(2), false, markets.get(2), "premium", dimensions.get(2)));
+            cars.add(new Car(producents.get(3), true, markets.get(3), "standard", dimensions.get(3)));
+            cars.add(new Car(producents.get(4), true, markets.get(4), "standard", dimensions.get(4)));
+            cars.add(new Car(producents.get(5), true, markets.get(4), "premium", dimensions.get(5)));
+            cars.add(new Car(producents.get(6), false, markets.get(2), "premium", dimensions.get(6)));
+            cars.add(new Car(producents.get(7), false, markets.get(3), "standard", dimensions.get(7)));
+            cars.add(new Car(producents.get(8), true, markets.get(3), "standard", dimensions.get(8)));
+            cars.add(new Car(producents.get(9), true, markets.get(0), "medium", dimensions.get(9)));
+            cars.add(new Car(producents.get(8), true, markets.get(0), "standard", dimensions.get(9)));
+            cars.add(new Car(producents.get(7), false, markets.get(1), "premium", dimensions.get(8)));
+            cars.add(new Car(producents.get(6), true, markets.get(2), "medium", dimensions.get(7)));
+            cars.add(new Car(producents.get(5), true, markets.get(4), "standard", dimensions.get(6)));
+            cars.add(new Car(producents.get(4), false, markets.get(3), "premium", dimensions.get(5)));
+
 
         System.out.println(" ");
         System.out.println("CAR MODEL TYPE GEARTYPE MARKET HEIGHT WIDTH TRUNKCAPACITY");
         System.out.println(" ");
         for (int i=0; i < cars.size(); i++) {
-
             System.out.println(cars.get(i).getProducent().getModel() + " " + cars.get(i).getProducent().getType() + " " +
                     cars.get(i).isAutomaticGear() + " " + cars.get(i).getMarket().getName() + " " + cars.get(i).getSegment() +" " +
                     cars.get(i).getDimension().getHeight() + " " + cars.get(i).getDimension().getWidth() + " " +
                     cars.get(i).getDimension().getTrunkCapacity());
+        }
+//        public void findSpecific() {
 
-
+            for (int i=0; i < cars.size(); i++) {
+                if (cars.get(i).getProducent().getModel().equals("BMW") &&
+                        cars.get(i).isAutomaticGear() == true &&
+                        cars.get(i).getDimension().getTrunkCapacity() > 300) {
+//                    cars.get(i).getMarket()
+                    int a = 3;
+                    System.out.println("Special BMW found! " + countries.get(a).getCountryName() + " " + countries.get(a).getCountrySign());
+                }
+//                else {
+//                    System.out.println("No BMWs like that!");
+//                }
         }
 
+
     }
+
+//
+//    public static string findBMW(Car a){
+//        a = cars;
+//        return result;
+//
+//    }
 
     public static int randomIndex(int end) {
         Random random = new Random();
