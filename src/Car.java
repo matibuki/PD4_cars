@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Car {
-
-
-//    private String producent;
+    Producent producent;
     private boolean isAutomaticGear;
+    Market market;
     private String segment;
+
+    Dimension dimension;
 
     public boolean isAutomaticGear() {
             return isAutomaticGear;
@@ -23,10 +24,36 @@ public class Car {
     public void setSegment(String segment) {
             this.segment = segment;
     }
+    public Producent getProducent() {
+        return producent;
+    }
 
-    public Car (Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimensions){
+    public void setProducent(Producent producent) {
+        this.producent = producent;
+    }
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public void setMarket(Market market) {
+        this.market = market;
+    }
+
+    public Dimension getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(Dimension dimension) {
+        this.dimension = dimension;
+    }
+
+    public Car (Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimension){
+        this.producent = producent;
         this.isAutomaticGear = isAutomaticGear;
+        this.market = market;
         this.segment = segment;
+        this.dimension = dimension;
     }
 
 
@@ -77,13 +104,12 @@ public class Car {
 
 
         List<Car> cars = new ArrayList<Car>();
-        for (int i=0; i < 15; i++) {
+//        for (int i=0; i < 15; i++)
             cars.add(new Car(producents.get(0), false, markets.get(0), "standard", dimensions.get(0)));
             cars.add(new Car(producents.get(1), false, markets.get(1), "standard", dimensions.get(1)));
             cars.add(new Car(producents.get(2), false, markets.get(2), "standard", dimensions.get(2)));
             cars.add(new Car(producents.get(3), false, markets.get(3), "standard", dimensions.get(3)));
 
-        }
         System.out.println(cars);
     }
 

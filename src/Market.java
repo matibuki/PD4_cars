@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Market {
@@ -18,6 +19,7 @@ public class Market {
 
     public Market (String marketName) {
         name = marketName;
+        countries = new ArrayList<Country>();
     }
 
 
