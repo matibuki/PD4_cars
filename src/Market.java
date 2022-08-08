@@ -2,6 +2,7 @@ import java.util.List;
 
 public class Market {
     private String name;
+    private List<Country> countries;
 
     public String getName() {
         return name;
@@ -12,7 +13,11 @@ public class Market {
     }
 
     public void addCountry(Country c){
-        return
+        countries.add(c);
+    }
+
+    public Market (String marketName) {
+        name = marketName;
     }
 
 

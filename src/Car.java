@@ -1,6 +1,7 @@
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Car {
 
@@ -70,12 +71,26 @@ public class Car {
         countries.add(new Country("USA", 'U'));
         countries.add(new Country("Korea", 'K'));
 
-        Market m = new Market("business");
-        List<Market> markets = new ArrayList<Market>();
-        markets.add(new Market("business", countries.get(n0));
+        List<Market> markets = new ArrayList<>();
 
-        List<Dimension> dimensions = new ArrayList<>();
-        dimensions.add(new Dimension(100, 200, 5));
+        String[] marketNames = new String[]{"business", "cargo", "taxi", "transport", "bus"};
+        for (int i = 0; i < marketNames.length; i++) {
+            Market m = new Market(marketNames[i]);
+            int a = randomIndex(5);
+            m.addCountry(countries.get(a));
+            m.addCountry(countries.get(a));
+            m.addCountry(countries.get(a));
+            markets.add(m);
+        }
+
+        List<Dimension> dimensions = new ArrayList<Dimension>();
+
+
+    }
+
+    public static int randomIndex(int end) {
+        Random random = new Random();
+        return random.nextInt(end);
 
     }
 }
