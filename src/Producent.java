@@ -1,2 +1,21 @@
-package PACKAGE_NAME;public class Producent {
+public class Producent {
+    String model;
+    String type;
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 }
