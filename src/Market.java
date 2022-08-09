@@ -25,14 +25,8 @@ public class Market {
         this.name = marketName;
         this.countries = new ArrayList<Country>();
     }
-    public void getCountries(int i) {
-        countries.get(i);
-
-
+    public List<Country> getCountries() {
+        return countries;
     }
 
-
-//    public int getCountrySize() {
-//        return countries.size();
-//    }
 }

@@ -147,15 +147,14 @@ public class Car {
                     cars.get(i).getDimension().getTrunkCapacity() > 300) {
                 System.out.println("Special BMW found!");
 
-//                System.out.println(countries.get(cars.get(i)).getCountryName());
-//                System.out.println(b.getCountries());
                 for (int j = 0; j < cars.get(i).getMarket().countriesSize(); j++) {
+                    System.out.println(cars.get(i).getMarket().getCountries());
 //                    System.out.println(cars.get(i).getMarket(j).getCountryName() + " - " + countries.get(j).getCountrySign());
 //                    String a = cars.get(i).getMarket()
 //                    System.out.println(cars.get(i).getMarket().getCountries(j));
 //                    Country a = new Country()cars.get(i).getMarket().getCountries(j)
-                    System.out.println(market.get().getCountries();
-//                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
+//                    System.out.println(market.get().getCountries();
+                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
 //                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
                 }
             }
