@@ -17,17 +17,22 @@ public class Market {
         countries.add(c);
     }
 
+    public int countriesSize() {
+        return countries.size();
+    }
 
     public Market (String marketName) {
         this.name = marketName;
         this.countries = new ArrayList<Country>();
     }
-    public int getCountry(int a) {
-        return countries(a);
+    public void getCountries(int i) {
+        countries.get(i);
+
+
     }
 
 
-    public int getCountrySize() {
-        return countries.size();
-    }
+//    public int getCountrySize() {
+//        return countries.size();
+//    }
 }

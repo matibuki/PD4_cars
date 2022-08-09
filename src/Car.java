@@ -1,4 +1,3 @@
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,18 +11,21 @@ public class Car {
     Dimension dimension;
 
     public boolean isAutomaticGear() {
-            return isAutomaticGear;
+        return isAutomaticGear;
     }
+
     public void setAutomaticGear(boolean automaticGear) {
-            this.isAutomaticGear = automaticGear;
+        this.isAutomaticGear = automaticGear;
     }
 
     public String getSegment() {
-            return segment;
+        return segment;
     }
+
     public void setSegment(String segment) {
-            this.segment = segment;
+        this.segment = segment;
     }
+
     public Producent getProducent() {
         return producent;
     }
@@ -48,14 +50,13 @@ public class Car {
         this.dimension = dimension;
     }
 
-    public Car (Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimension){
+    public Car(Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimension) {
         this.producent = producent;
         this.isAutomaticGear = isAutomaticGear;
         this.market = market;
         this.segment = segment;
         this.dimension = dimension;
     }
-
 
     public static void main(String[] args) {
         List<Country> countries = new ArrayList<Country>();
@@ -65,16 +66,25 @@ public class Car {
         countries.add(new Country("USA", 'U'));
         countries.add(new Country("Korea", 'K'));
 
-        List<Market> markets = new ArrayList<>();
+        List<Market> market = new ArrayList<>();
 
         String[] marketNames = new String[]{"business", "cargo", "taxi", "transport", "bus"};
         for (int i = 0; i < marketNames.length; i++) {
             Market m = new Market(marketNames[i]);
+            int end = 5; // number of countries +1 (0-4 range)
             int a = randomIndex(5);
+            int b = randomIndex(5);
+            while (a == b) {
+                b = randomIndex(end);
+            }
+            int c = randomIndex(5);
+            while (c == b || c == a) {
+                c = randomIndex(end);
+            }
             m.addCountry(countries.get(a));
-            m.addCountry(countries.get(a));
-            m.addCountry(countries.get(a));
-            markets.add(m);
+            m.addCountry(countries.get(b));
+            m.addCountry(countries.get(c));
+            market.add(m);
         }
 
         List<Dimension> dimensions = new ArrayList<Dimension>();
@@ -103,21 +113,21 @@ public class Car {
 
 
         List<Car> cars = new ArrayList<Car>();
-        cars.add(new Car(producents.get(0), false, markets.get(0), "standard", dimensions.get(0)));
-        cars.add(new Car(producents.get(1), true, markets.get(1), "medium", dimensions.get(1)));
-        cars.add(new Car(producents.get(2), false, markets.get(2), "premium", dimensions.get(2)));
-        cars.add(new Car(producents.get(3), true, markets.get(3), "standard", dimensions.get(3)));
-        cars.add(new Car(producents.get(4), true, markets.get(4), "standard", dimensions.get(4)));
-        cars.add(new Car(producents.get(5), true, markets.get(4), "premium", dimensions.get(5)));
-        cars.add(new Car(producents.get(6), false, markets.get(2), "premium", dimensions.get(6)));
-        cars.add(new Car(producents.get(7), false, markets.get(3), "standard", dimensions.get(7)));
-        cars.add(new Car(producents.get(8), true, markets.get(3), "standard", dimensions.get(8)));
-        cars.add(new Car(producents.get(9), true, markets.get(0), "medium", dimensions.get(9)));
-        cars.add(new Car(producents.get(8), true, markets.get(0), "standard", dimensions.get(9)));
-        cars.add(new Car(producents.get(7), false, markets.get(1), "premium", dimensions.get(8)));
-        cars.add(new Car(producents.get(6), true, markets.get(2), "medium", dimensions.get(7)));
-        cars.add(new Car(producents.get(5), false, markets.get(4), "standard", dimensions.get(6)));
-        cars.add(new Car(producents.get(1), true, markets.get(3), "premium", dimensions.get(5)));
+        cars.add(new Car(producents.get(0), false, market.get(0), "standard", dimensions.get(0)));
+        cars.add(new Car(producents.get(1), true, market.get(1), "medium", dimensions.get(1)));
+        cars.add(new Car(producents.get(2), false, market.get(2), "premium", dimensions.get(2)));
+        cars.add(new Car(producents.get(3), true, market.get(3), "standard", dimensions.get(3)));
+        cars.add(new Car(producents.get(4), true, market.get(4), "standard", dimensions.get(4)));
+        cars.add(new Car(producents.get(5), true, market.get(4), "premium", dimensions.get(5)));
+        cars.add(new Car(producents.get(6), false, market.get(2), "premium", dimensions.get(6)));
+        cars.add(new Car(producents.get(7), false, market.get(3), "standard", dimensions.get(7)));
+        cars.add(new Car(producents.get(8), true, market.get(3), "standard", dimensions.get(8)));
+        cars.add(new Car(producents.get(9), true, market.get(0), "medium", dimensions.get(9)));
+        cars.add(new Car(producents.get(8), true, market.get(0), "standard", dimensions.get(9)));
+        cars.add(new Car(producents.get(7), false, market.get(1), "premium", dimensions.get(8)));
+        cars.add(new Car(producents.get(6), true, market.get(2), "medium", dimensions.get(7)));
+        cars.add(new Car(producents.get(5), false, market.get(4), "standard", dimensions.get(6)));
+        cars.add(new Car(producents.get(1), true, market.get(3), "premium", dimensions.get(5)));
 
 
         System.out.println(" ");
@@ -136,20 +146,25 @@ public class Car {
                     cars.get(i).isAutomaticGear() == true &&
                     cars.get(i).getDimension().getTrunkCapacity() > 300) {
                 System.out.println("Special BMW found!");
-                for (int j = 0; j < cars.get(i).market.getCountrySize(); j++) {
-                    System.out.println(cars.get(i).getCountry(j).getCountryName() + " - " + countries.get(j).getCountrySign());
-                }
 
+//                System.out.println(countries.get(cars.get(i)).getCountryName());
+//                System.out.println(b.getCountries());
+                for (int j = 0; j < cars.get(i).getMarket().countriesSize(); j++) {
+//                    System.out.println(cars.get(i).getMarket(j).getCountryName() + " - " + countries.get(j).getCountrySign());
+//                    String a = cars.get(i).getMarket()
+//                    System.out.println(cars.get(i).getMarket().getCountries(j));
+//                    Country a = new Country()cars.get(i).getMarket().getCountries(j)
+                    System.out.println(market.get().getCountries();
+//                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
+//                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
+                }
             }
 
-
         }
 
-        public static int randomIndex ( int end){
-            Random random = new Random();
-            return random.nextInt(end);
-
-        }
-
+    }
+    public static int randomIndex ( int end) {
+        Random random = new Random();
+        return random.nextInt(end);
     }
 }
