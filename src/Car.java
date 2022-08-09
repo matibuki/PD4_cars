@@ -139,7 +139,6 @@ public class Car {
                     cars.get(i).getDimension().getHeight() + " " + cars.get(i).getDimension().getWidth() + " " +
                     cars.get(i).getDimension().getTrunkCapacity());
         }
-//        public void findSpecific() {
 
         for (int i = 0; i < cars.size(); i++) {
             if (cars.get(i).getProducent().getModel().equals("BMW") &&
@@ -147,23 +146,32 @@ public class Car {
                     cars.get(i).getDimension().getTrunkCapacity() > 300) {
                 System.out.println("Special BMW found!");
 
-                for (int j = 0; j < cars.get(i).getMarket().countriesSize(); j++) {
-                    System.out.println(cars.get(i).getMarket().getCountries());
-//                    System.out.println(cars.get(i).getMarket(j).getCountryName() + " - " + countries.get(j).getCountrySign());
-//                    String a = cars.get(i).getMarket()
-//                    System.out.println(cars.get(i).getMarket().getCountries(j));
-//                    Country a = new Country()cars.get(i).getMarket().getCountries(j)
-//                    System.out.println(market.get().getCountries();
-                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
-//                    System.out.println(countries.get(j).getCountryName() + countries.get(j).getCountrySign());
-                }
-            }
+                for (Country c : cars.get(i).getMarket().getCountries())
 
+                    System.out.println(c.getCountryName() + " - " + c.getCountrySign());
+                }
         }
 
     }
+
+
+
     public static int randomIndex ( int end) {
         Random random = new Random();
         return random.nextInt(end);
+    }
+    public static String printBMW(Car cars){
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getProducent().getModel().equals("BMW") &&
+                    cars.get(i).isAutomaticGear() == true &&
+                    cars.get(i).getDimension().getTrunkCapacity() > 300) {
+                System.out.println("Special BMW found!");
+
+                for (Country c : cars.get(i).getMarket().getCountries())
+
+                    System.out.println(c.getCountryName() + " - " + c.getCountrySign());
+            }
+        }
+
     }
 }
