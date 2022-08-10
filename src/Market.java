@@ -5,6 +5,11 @@ public class Market {
     private String name;
     private List<Country> countries;
 
+    public Market (String marketName) {
+        this.name = marketName;
+        this.countries = new ArrayList<Country>();
+    }
+
     public String getName() {
         return name;
     }
@@ -19,11 +24,6 @@ public class Market {
 
     public int countriesSize() {
         return countries.size();
-    }
-
-    public Market (String marketName) {
-        this.name = marketName;
-        this.countries = new ArrayList<Country>();
     }
     public List<Country> getCountries() {
         return countries;

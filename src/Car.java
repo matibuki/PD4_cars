@@ -7,8 +7,15 @@ public class Car {
     private boolean isAutomaticGear;
     Market market;
     private String segment;
-
     Dimension dimension;
+
+    public Car(Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimension) {
+        this.producent = producent;
+        this.isAutomaticGear = isAutomaticGear;
+        this.market = market;
+        this.segment = segment;
+        this.dimension = dimension;
+    }
 
     public boolean isAutomaticGear() {
         return isAutomaticGear;
@@ -50,12 +57,33 @@ public class Car {
         this.dimension = dimension;
     }
 
-    public Car(Producent producent, boolean isAutomaticGear, Market market, String segment, Dimension dimension) {
-        this.producent = producent;
-        this.isAutomaticGear = isAutomaticGear;
-        this.market = market;
-        this.segment = segment;
-        this.dimension = dimension;
+    public static int randomIndex(int start, int end) {
+        Random random = new Random();
+        return random.nextInt(start, end);
+    }
+
+    private static void carList(List<Car> cars) {
+        System.out.println("\n" + "CAR MODEL TYPE GEARTYPE MARKET HEIGHT WIDTH TRUNKCAPACITY" + "\n");
+        for (int i = 0; i < cars.size(); i++) {
+            System.out.println(cars.get(i).getProducent().getModel() + " " + cars.get(i).getProducent().getType() + " " +
+                    cars.get(i).isAutomaticGear() + " " + cars.get(i).getMarket().getName() + " " + cars.get(i).getSegment() + " " +
+                    cars.get(i).getDimension().getHeight() + " " + cars.get(i).getDimension().getWidth() + " " +
+                    cars.get(i).getDimension().getTrunkCapacity());
+        }
+    }
+    public static void printBMW(List<Car> cars) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getProducent().getModel().equals("BMW") &&
+                    cars.get(i).isAutomaticGear() == true &&
+                    cars.get(i).getDimension().getTrunkCapacity() > 300) {
+                System.out.println("Car found! It is produced in: ");
+
+                for (Country c : cars.get(i).getMarket().getCountries()) {
+                    System.out.println(c.getCountryName() + " - " + c.getCountrySign());
+                }
+            }
+
+        }
     }
 
     public static void main(String[] args) {
@@ -71,15 +99,16 @@ public class Car {
         String[] marketNames = new String[]{"business", "cargo", "taxi", "transport", "bus"};
         for (int i = 0; i < marketNames.length; i++) {
             Market m = new Market(marketNames[i]);
+            int start = 0;
             int end = 5; // number of countries +1 (0-4 range)
-            int a = randomIndex(5);
-            int b = randomIndex(5);
+            int a = randomIndex(start, end);
+            int b = randomIndex(start, end);
             while (a == b) {
-                b = randomIndex(end);
+                b = randomIndex(start, end);
             }
-            int c = randomIndex(5);
+            int c = randomIndex(start, end);
             while (c == b || c == a) {
-                c = randomIndex(end);
+                c = randomIndex(start, end);
             }
             m.addCountry(countries.get(a));
             m.addCountry(countries.get(b));
@@ -88,16 +117,15 @@ public class Car {
         }
 
         List<Dimension> dimensions = new ArrayList<Dimension>();
-        dimensions.add(new Dimension(100, 300, 400));
-        dimensions.add(new Dimension(80, 250, 350));
-        dimensions.add(new Dimension(81, 210, 1350));
-        dimensions.add(new Dimension(82, 220, 2350));
-        dimensions.add(new Dimension(83, 240, 4350));
-        dimensions.add(new Dimension(84, 270, 1350));
-        dimensions.add(new Dimension(90, 250, 2350));
-        dimensions.add(new Dimension(80, 240, 750));
-        dimensions.add(new Dimension(77, 252, 850));
-        dimensions.add(new Dimension(83, 310, 200));
+        int dimensionsSize = 10;
+        for (int i=0; i < dimensionsSize; i++){
+            int a = randomIndex(230, 350);
+            int b = randomIndex(160, 210);
+            int c = randomIndex(3500, 7000);
+
+            dimensions.add(new Dimension(a, b, c));
+        }
+
 
         List<Producent> producents = new ArrayList<Producent>();
         producents.add(new Producent("FSO", "Polonez"));
@@ -130,48 +158,12 @@ public class Car {
         cars.add(new Car(producents.get(1), true, market.get(3), "premium", dimensions.get(5)));
 
 
-        System.out.println(" ");
-        System.out.println("CAR MODEL TYPE GEARTYPE MARKET HEIGHT WIDTH TRUNKCAPACITY");
-        System.out.println(" ");
-        for (int i = 0; i < cars.size(); i++) {
-            System.out.println(cars.get(i).getProducent().getModel() + " " + cars.get(i).getProducent().getType() + " " +
-                    cars.get(i).isAutomaticGear() + " " + cars.get(i).getMarket().getName() + " " + cars.get(i).getSegment() + " " +
-                    cars.get(i).getDimension().getHeight() + " " + cars.get(i).getDimension().getWidth() + " " +
-                    cars.get(i).getDimension().getTrunkCapacity());
-        }
+        carList(cars); // print entire car list
 
-        for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getProducent().getModel().equals("BMW") &&
-                    cars.get(i).isAutomaticGear() == true &&
-                    cars.get(i).getDimension().getTrunkCapacity() > 300) {
-                System.out.println("Special BMW found!");
 
-                for (Country c : cars.get(i).getMarket().getCountries())
-
-                    System.out.println(c.getCountryName() + " - " + c.getCountrySign());
-                }
-        }
+        System.out.println("\n" + "List of countries where BMW with automatic gear and trunk larger than 300 is produced: " + "\n");
+        printBMW(cars);
 
     }
 
-
-
-    public static int randomIndex ( int end) {
-        Random random = new Random();
-        return random.nextInt(end);
-    }
-    public static String printBMW(Car cars){
-        for (int i = 0; i < cars.size(); i++) {
-            if (cars.get(i).getProducent().getModel().equals("BMW") &&
-                    cars.get(i).isAutomaticGear() == true &&
-                    cars.get(i).getDimension().getTrunkCapacity() > 300) {
-                System.out.println("Special BMW found!");
-
-                for (Country c : cars.get(i).getMarket().getCountries())
-
-                    System.out.println(c.getCountryName() + " - " + c.getCountrySign());
-            }
-        }
-
-    }
 }
